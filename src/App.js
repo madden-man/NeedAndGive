@@ -5,9 +5,9 @@ import { AppRouter } from './config/AppRouter';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         I guess we will have a header lol
-      </header>
+      </header> */}
       <AppRouter />
     </div>
   );
