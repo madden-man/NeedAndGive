@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
+
 import { AppRouter } from './config/AppRouter';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       {/* <header className="App-header">
@@ -11,6 +11,6 @@ function App() {
       <AppRouter />
     </div>
   );
-}
+};
 
 export default App;

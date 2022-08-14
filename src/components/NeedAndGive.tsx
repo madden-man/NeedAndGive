@@ -1,31 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-type Post = {
-    content: {
-        rendered,
-    },
-    title: {
-        rendered,
-    },
-};
+import { Post } from '../types';
 
-export const NeedAndGive = () => {
-    const [posts, setPosts] = useState([]);
+const NeedAndGive = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
-    useEffect(() => {
-        fetch('https://test-denverchurch.site/wp-json/wp/v2/ng-post')
-            .then((data) => data.json()
-            .then((posts) => setPosts(posts)));
-    }, []);
+  useEffect(() => {
+    fetch('https://test-denverchurch.site/wp-json/wp/v2/ng-post').then((data) =>
+      data.json().then((posts: Post[]) => setPosts(posts)),
+    );
+  }, []);
 
-
-    return (
-        <div>
-            {posts.map(({ content: { rendered: contentRendered }, title: { rendered: titleRendered }}) =>
-                <div>
-                    <h2>{titleRendered}</h2>
-                    {contentRendered}
-                </div>)}
+  return (
+    <div>
+      {posts.map((p, i) => (
+        <div key={`${i}_${p.title.rendered}`}>
+          <h2>{p.title.rendered}</h2>
+          {p.content.rendered}
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
+export default NeedAndGive;
